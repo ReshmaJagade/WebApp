@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object</title>
+</head>
+<body>
+    <h1>Objets, Objects , Objects </h1>
+   <script>
+    
+    // This function act like a BluePrint
+    function Product(name, price){
+        //Creating object using Create of Object inbuilt provided
+        //
+        let product=Object.create(constructorObject);
+        //Setting state to object just created
+        //we define member variables as well as initialize member Variables
+        product.title=name;
+        product.unitPrice=price;
+        return product;
+    }
+
+    //Define Behaviour to object
+
+    let constructorObject={
+        //Member functions
+        sell:function(){
+            return "product is sold";
+        },
+        update:function(){
+            return  "product is updated...";
+        },
+
+        remove:function(){
+            return "product is destroyed...."
+        }
+    };
+
+    //Object Orientation
+    let flower1=Product("Rose",12);
+    let flower2=Product("Lotus",24);
+    console.log(flower1);
+    console.log("---------------------------------");
+    console.log(flower2);
+
+    console.log(flower1.title);
+    console.log(flower2.title);
+
+    console.log(flower1.sell());
+    console.log(flower2.sell());
+
+    console.log(flower1.update());
+    console.log(flower2.update());
+
+    </script>
+</body>

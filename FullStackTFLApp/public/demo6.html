@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object</title>
+</head>
+<body>
+    <h1>Asynchronous Programming for Home loan Scenario </h1>
+   <script>
+
+        async function processHomeLoan(){
+            console.log("verify Home loan Application");
+            console.log("Check Bank statement of three years of Applicant");
+            console.log("Get it Approve from Senior");
+             
+            return "Your home loan is approved";
+        };
+
+        function startContructingHouse(){
+            console.log("get approved Blue print of Home");
+            console.log("lay down foundation");
+            console.log(" Pillars......");
+        };
+
+        function startGettingQuotationsfromPlumber(){
+            console.log("get quotation from plumber");
+            console.log("Verfiy market Rate for material as well labour cost");
+        };
+
+        processHomeLoan().then(startContructingHouse)
+                         .then(startGettingQuotationsfromPlumber);
+
+        console.log(" Normal  day to day activities are going on ");
+   </script>
+</body>
+</html>
+

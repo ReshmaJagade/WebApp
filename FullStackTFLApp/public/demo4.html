@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object</title>
+</head>
+<body>
+    <h1>Inheritance </h1>
+    <script>
+        //sir,what is the exact use here for using object oriented concept?
+        //Answer:
+        //Simplicity 
+        //easy to maintain
+        //comfort of Object Oriented Developer
+        //less learning curve
+        //natural way of implementation
+
+        class Animal{
+            constructor(name, age){
+                this.name=name;
+                this.age=age;
+            }
+            sing(){
+                return `${this.name} can sing`;
+            }
+            dance(){
+                return `${this.name} can dance`;
+            }
+        }
+
+        // Is a relationship  between two classes
+
+        class Cat extends Animal{
+            constructor(name, age, whiskerColor){
+                super(name,age);
+                this.whiskerColor=whiskerColor;
+            }
+            walk(){
+                return  ` I have  ${this.whiskerColor } whiskers, I am walking`;
+            }
+
+            //function overriding
+            dance(){
+                return  ` Derived function  ${this.whiskerColor } Rocking`;
+            } 
+        }
+
+        // Test
+        let manutai=new Cat("Mani", 4, "While");
+        console.log(manutai);
+        console.log(manutai.walk());
+        console.log(manutai.dance());  //Polymorphism
+        console.log(manutai.sing());
+
+        //Reflection: getting metabase of instance associated at runtime
+        if (manutai instanceof Animal)
+        {
+            Console.log(" is Animal");
+        }
+        else{
+            Console.log(" is not  Animal");
+        }
+    </script>
+</body>
+</html>
+<!---
+     System Software:Operating system , device Drivers, machine level interfacing
+                      C, Embedded C, Assembly, machine level programming
+
+     Application Software: Business Application--------Object Orientation
+                          
+                          Application
+                          servers { ram, cpu, hd}
+
+    sir which are the limitation in that for oops consepts?
+-->

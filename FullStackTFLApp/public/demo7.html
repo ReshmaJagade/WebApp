@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Async Await Promise</title>
+    </head>
+    <body>
+        <script>
+        async function startWorking(){ 
+
+            console.log(" Startworking code is getting started its exeuction.............");
+
+            let promise=new Promise((resolve, reject)=>{
+
+             // to create simulation that some thing will  be responsed only after few seconds
+
+            setTimeout(()=>{
+                                console.log("Task is processed, data is generated, response is about to be sent");
+                                resolve("Task is completed  !")
+                            },
+                            5000);
+            })
+            // This code is getting blocked till promise is retured 
+
+            console.log(" Startworking code is about to get promise");
+            //let count=56;
+
+            let result= await  promise;
+            console.log("Here displaying Value received.......");
+            console.log(result);
+        };
+
+        //Invoke Asynchronous Function
+        console.log("----------------Main Javascript exeuction is started-------------------");
+        startWorking();
+        console.log(("-------------- Main Javascript execution is finished--------------------"));
+        </script>
+    </body>
+</html>

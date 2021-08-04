@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fetch data from Server</title>
+    </head>
+    <body>
+        <script>
+        //Reactive Programming
+
+        // function for POSTING data to  REST API
+
+        async function postCustomerData(){
+
+            let customer = {
+                contactnumber: "999999999",
+                email: "sambhaji.shinde@gmail.com",
+                firstname: "Sambhaji",
+                id: 89,
+                lastname: "Shinde"
+            };
+
+            let response = await fetch('/api/customers', {  method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json;charset=utf-8'
+                                                            },
+                                                            body: JSON.stringify(customer)
+                                                            });
+
+            let result = await response.json();
+            console.log(result.message);
+        }
+
+        // Function for getting data from REST API 
+        //Declaring function
+        async function getResponseFromServer(){
+            try{
+                var url= "https://api.github.com/users/ManaliRKamble";
+                let user=await fetch(url)
+                                    .then(response=>{
+                                                    return response.json();
+                                                    })
+                                    .catch(err=>{
+                                        console.log("Something has gone wrong.....")
+                                    });
+              console.log(user.bio);
+              console.log(user.location);
+              console.log(user.company);    
+            }
+            catch(err){
+                alert(err);
+            }
+        };
+        //Invoking function
+        getResponseFromServer();
+        </script>
+    </body>
+    </html>

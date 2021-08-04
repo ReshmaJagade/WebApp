@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="scripts/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>CRUD Operations using Ajax jQuery</h1>
+        <hr/>
+            <button id="btnCreate">Create</button> 
+            <button id="btnRead">Read</button>
+            <button id="btnUpdate">Update</button>
+            <button id="btnDelete">Delete</button> 
+            <button id="btnReadTasks">Read Tasks</button><hr>
+            <button id="btnCreatecust">Create new Customer</button> <br/>
+            <button id="btnReadcustomers">Read customers details</button><br/>
+            <button id="btnUpdatecust">Update customer</button><br/>
+            <button id="btnDeletecust">Delete customer</button><br/><hr>
+            <button id="btnCreateflow">Create new flower</button> <br/>
+            <button id="btnReadflow">Read flower details</button><br/>
+            <button id="btnUpdateflow">Update flower</button><br/>
+            <button id="btnDeleteflow">Delete flower</button><br/><hr>
+
+
+            <button id="btnCreateorder">Create new order</button> <br/>
+            <button id="btnReadorder">Read orderdetails</button><br/>
+            <button id="btnUpdateorder">Update order</button><br/>
+            <button id="btnDeleteorder">Delete order</button><br/><hr>
+
+            <button id="btnCreateOI">Create orderitem</button> <br/>
+            <button id="btnReadOI">Read orderitem details</button><br/>
+            <button id="btnUpdateOI">Update orderitem</button><br/>
+            <button id="btnDeleteOI">Delete orderitem</button><br/>
+
+
+
+            <hr/>      
+        <script>
+            $(document).ready(function(){
+
+            var url="http://localhost:9898/api/customers";
+
+            $("#btnCreate").click(function(){             
+                //send data to rest api for post request handler
+                //http://localhost:9898/api/customers/76
+                var theCustomer={
+                    "id":76,
+                    "firstname":"Shreedevi",
+                    "lastname":"kapoor",
+                    "email":"hahawai.kapoor@gamil.com",
+                    "contactnumber":"9881745898"
+                };
+          
+               $.ajax({
+                        url: url,  // url of rest api
+                        type: 'POST',// request type of rest api
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theCustomer), // data to be sent through request body
+                        success: function (result) {
+                           console.log("new customer is posted to server ");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+                });
+
+
+
+
+                $("#btnCreatecust").click(function(){             
+                //send data to rest api for post request handler
+                //http://localhost:9898/api/customers/76
+                var theCustomer={
+                    "id":6,
+                    "fname":"sunidhi",
+                    "lname":"bhosale",
+                    "email":"sb@gamil.com",
+                    "contactno":"90000000"
+                };
+                $.ajax({
+                        url: "/api/customers",  // url of rest api
+                        type: 'POST',// request type of rest api
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theCustomer), // data to be sent through request body
+                        success: function (result) {
+                           console.log("new customer is posted to server ");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+                });
+
+              
+
+            $("#btnRead").click(function(){             
+                //R operation :Read Operation
+                $.ajax({
+                        url: url,
+                        type: 'GET', 
+                        success: function (result) {
+                            console.log(result);
+                            console.log("the customer is deleted from server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+
+            $("#btnReadTasks").click(function(){             
+                //R operation :Read Operation
+                $.ajax({
+                        url: "/api/tasks",
+                        type: 'GET', 
+                        success: function (result) {
+                            console.log(result);
+                            console.log("All tasks received from server , utlmately from database server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+
+
+            $("#btnReadcustomers").click(function(){             
+                //R operation :Read Operation
+                $.ajax({
+                        url: "/api/customers",
+                        type: 'GET', 
+                        success: function (result) {
+                            console.log(result);
+                            console.log("All customers details get displayed...");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+
+
+
+            $("#btnUpdate").click(function(){                        
+                //http://localhost:9898/api/customers/76
+                var theCustomer={
+                    "id":5,
+                    "fname":"Deepika",
+                    "lname":"Padukone",
+                    "email":"d.p@gamil.com",
+                    "contactno":"99999999"
+                };
+
+                let url="/api/customers/"+theCustomer.id;
+                //U operation : Update Operation
+                $.ajax({
+                        url: url,  // url of rest api
+                        type: 'PUT',// request type of rest api
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theCustomer), // data to be sent through request body
+                        success: function (result) {
+                        console.log("customer is updated to server ");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+                
+
+
+
+            $("#btnUpdatecust").click(function(){                        
+                //http://localhost:9898/api/customers/76
+                var theCustomer={
+                    "id":4,
+                    "fname":"Deepika",
+                    "lname":"Padukone",
+                    "email":"dp@gamil.com",
+                    "contactno":"99999999"
+                };
+
+                let url2="http://localhost:9898/api/customers/4";
+                //U operation : Update Operation
+                $.ajax({
+                        url: url2,  // url of rest api
+                        type: 'PUT',// request type of rest api
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theCustomer), // data to be sent through request body
+                        success: function (result) {
+                        console.log("customer is updated to server ");
+                        },
+                        error:function(err){
+                            console.log("Error are Occured:"+err);
+                        }
+                });
+            });
+
+
+
+
+
+            $("#btnDelete").click(function(){             
+    
+                // used to delete customer from server
+                //D operation: Delete operation
+                $.ajax({
+                        url: url+"/76",
+                        type: 'DELETE',
+                        success: function (result) {
+                            console.log("the customer is deleted from server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+        });   
+        
+        
+
+        $("#btnDeletecust").click(function(){             
+            let url1="http://localhost:9898/api/customers/5";
+                $.ajax({
+                        url:url1,
+                        type: 'DELETE',
+                        success: function (result) {
+                            console.log("the customer is deleted from server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+        });
+       
+
+
+        var url="http://localhost:9898/api/flowers";
+
+$("#btnCreateflow").click(function(){             
+    //send data to rest api for post request handler
+    //http://localhost:9898/api/customers/76
+    var theFlower={
+        "id":6,
+        "name":"Tulip",
+        "descripation":"bell shape flower",
+        "unitprice":12,
+        "quantity":5000,
+        "likes":45000
+    };
+    
+   $.ajax({
+            url: url,  // url of rest api
+            type: 'POST',// request type of rest api
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data:JSON.stringify(theFlower), // data to be sent through request body
+            success: function (result) {
+               console.log("new flower is posted to server ");
+            },
+            error:function(err){
+                console.log(err);
+            }
+    });
+    });
+
+    $("#btnReadflow").click(function(){             
+                //R operation :Read Operation
+                $.ajax({
+                        url: url,
+                        type: 'GET', 
+                        success: function (result) {
+                            console.log(result);
+                            console.log("the flowers data going to displayed");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+
+
+
+
+            $("#btnUpdateflow").click(function(){                        
+                //http://localhost:9898/api/customers/76
+                var theFlower={
+                    "id":4,
+                    "name":"Mogra",
+                    "descripation":"Good smell flower",
+                    "unitprice":15,
+                    "quantity":5600,
+                   "likes":50000
+                };
+
+
+
+                let url2="http://localhost:9898/api/flowers/4";
+                //U operation : Update Operation
+                $.ajax({
+                        url: url2,  // url of rest api
+                        type: 'PUT',// request type of rest api
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theFlower), // data to be sent through request body
+                        success: function (result) {
+                        console.log("flower is updated to server ");
+                        },
+                        error:function(err){
+                            console.log("Error are Occured:"+err);
+                        }
+                });
+            });
+
+
+            $("#btnDeleteflow").click(function(){             
+            let url1="http://localhost:9898/api/flowers/6";
+                $.ajax({
+                        url:url1,
+                        type: 'DELETE',
+                        success: function (result) {
+                            console.log("the flower is deleted from server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+        });
+       /********************************************************/
+        var url="http://localhost:9898/api/orders";
+
+$("#btnCreateorder").click(function(){             
+    var theOrder={
+        "orderid":5,
+        "ordatedate":'2021-08-03',
+        "customerid":4,
+        "amount":5000
+    };
+    
+   $.ajax({
+            url: url,  
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data:JSON.stringify(theOrder),
+            success: function (result) {
+               console.log("new Order is posted to server ");
+            },
+            error:function(err){
+                console.log(err);
+            }
+    });
+    });
+
+    $("#btnReadorder").click(function(){             
+                //R operation :Read Operation
+                $.ajax({
+                        url: url,
+                        type: 'GET', 
+                        success: function (result) {
+                            console.log(result);
+                            console.log("the orders data going to displayed");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+
+
+
+
+            $("#btnUpdateorder").click(function(){                        
+                var theOrder={
+                    "orderid":3,
+                    "orderdate":'2021-11-03',
+                    "custmerid":4,
+                    "amount":1000
+                };
+                let url2="http://localhost:9898/api/orders/3";  
+                $.ajax({
+                        url: url2,  
+                        type: 'PUT',
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theOrder), 
+                        success: function (result) {
+                        console.log("Order is updated to server ");
+                        },
+                        error:function(err){
+                            console.log("Error are Occured:"+err);
+                        }
+                });
+            });
+
+
+            $("#btnDeleteorder").click(function(){             
+            let url1="http://localhost:9898/api/orders/5";
+                $.ajax({
+                        url:url1,
+                        type: 'DELETE',
+                        success: function (result) {
+                            console.log("the order is deleted from server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+        });
+       
+
+
+
+
+
+         /********************************************************/
+         var url="http://localhost:9898/api/orderitems";
+
+$("#btnCreateOI").click(function(){             
+    var theOrderitem={
+        "orderitemid":3,
+        "orderid":5,
+        "flowerid":5,
+        "quantity":45
+    };
+    
+   $.ajax({
+            url: url,  
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data:JSON.stringify(theOrderitem),
+            success: function (result) {
+               console.log("new Orderitem is posted to server ");
+            },
+            error:function(err){
+                console.log(err);
+            }
+    });
+    });
+
+    $("#btnReadOI").click(function(){             
+                $.ajax({
+                        url: url,
+                        type: 'GET', 
+                        success: function (result) {
+                            console.log(result);
+                            console.log("the orderitems data going to displayed");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+            });
+
+
+
+
+            $("#btnUpdateOI").click(function(){                        
+                var theOrderitem={
+                    "orderitemid":3,
+                    "orderid":6,
+                    "flowerid":4,
+                    "quantity":4500
+                };
+                let url2="http://localhost:9898/api/orderitems/3";  
+                $.ajax({
+                        url: url2,  
+                        type: 'PUT',
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data:JSON.stringify(theOrderitem), 
+                        success: function (result) {
+                        console.log("Orderitem is updated to server ");
+                        },
+                        error:function(err){
+                            console.log("Error are Occured:"+err);
+                        }
+                });
+            });
+
+
+            $("#btnDeleteOI").click(function(){             
+            let url1="http://localhost:9898/api/orderitems/3";
+                $.ajax({
+                        url:url1,
+                        type: 'DELETE',
+                        success: function (result) {
+                            console.log("the orderitem is deleted from server");
+                        },
+                        error:function(err){
+                            console.log(err);
+                        }
+                });
+        });
+       
+        </script>
+    </body>
+</html>

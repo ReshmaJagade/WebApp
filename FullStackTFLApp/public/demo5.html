@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object</title>
+</head>
+<body>
+    <h1>Asynchronous Programming </h1>
+   <script>
+
+        //Background Task
+
+        function onComplete(){
+           console.log("Executing certain logic after receiving response from another function");
+           console.log("Refershing Screen  with latest information recieved from Response");
+        }
+
+       async function startWorking(){
+           //takes  5 hours to process this following logic
+           console.log("processing request");
+           console.log("Searching data from back End");
+           console.log("Filtering data  based on Business Rule");
+           console.log("Convert  result inthe form of response");
+           console.log("Return response of the core logic back to caller");
+           return "work is completed";
+       };
+
+      console.log("***********Start of the Javascript Code Segment");
+      /*
+        //Synchronous Call 
+        //Blocking Calling
+        startWorking();
+        onComplete();
+        */
+
+       //Asynchronous Programming
+       
+       startWorking().then(onComplete);   //registering callback function
+       //onComplete();  //Direct Calling
+       console.log("***********End of the Code Segment");
+    </script>
+</body>
+</html>

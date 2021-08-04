@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object</title>
+</head>
+<body>
+    <h1>ES6 Javascript syntax </h1>
+   <script>
+
+       //Object Oriented Code
+       
+    class Product{
+        
+        //Only one constructor is allowed to implement
+        constructor(name, price, data){  
+            this.title=name;
+            this.unitPrice=price;
+            this.description=data;
+        }
+        sell(){
+            return `${this.title} is available`;
+        }
+        update(){
+            return `${this.title} is updated`;
+        }
+
+        order(){
+
+            return `${this.title} is order is placed`;
+        }
+    };
+
+    let lotus=new Product("lotus",23,"Worship Flower");
+    /*console.log(lotus);
+    console.log(lotus.sell());
+    console.log(lotus.update());*/Product
+    let rose=new Product("rose",40, "Valentine Flower");
+    /*console.log(rose);
+    console.log(rose.sell());
+    console.log(rose.update());
+   */
+
+
+    let products=[];
+    products[0]=lotus;
+    products[1]=rose;
+
+    console.log(products);
+
+    for(var i=0; i<products.length;i++){
+        console.log(products[i].title);
+    }
+
+   </script>
+</body>

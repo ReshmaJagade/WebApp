@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Object</title>
+</head>
+<body>
+    <h1>Objets, Objects , Objects </h1>
+   <script>
+
+       let person={
+            firstname:"Chaitany",
+            lastname:"Joshi",
+            age:22,
+            email:"chaitany.joshi@gamil.com"
+       };
+
+       let product1={
+           id:12,
+           title:"Rose",
+           description:"Valentine Flower",
+           unitprice:22,
+           quantity:4000,
+           imageurl:"./images/rose.jpg"
+       }
+
+       let product2={
+           id:13,
+           title:"Jasmine",
+           description:"Smellling Flower",
+           unitprice:22,
+           quantity:4000,
+           imageurl:"./images/rose.jpg"
+       }
+
+
+       console.log(person);
+       console.log(person.firstname);
+
+       let product3=product2;
+       console.log(product1);
+       console.log(product2);  // product2 and product3  references pointing to same object
+                               // shallow copy
+       console.log(product3);
+       product3.title="Lotus";
+       console.log(product2);
+       console.log(product3);
+
+   </script>
+    
+</body>
+</html>
